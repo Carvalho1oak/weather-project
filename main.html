@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="shortcut icon" href="src/images/favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="div-inner">
+            <h1>WeatherApp</h1>
+            <form class="search-form" action="/en/search-locations" method="GET">
+			<input name="query" class="search-input" type="text" placeholder="Address, City or Zip Code" data-placeholder="Address, City or Zip Code" data-alternative-placeholder="Address, City or Zip Code" autocomplete="off">
+		</form>
+        </div>
+        <nav>
+            <a href="#">TODAY</a>
+            <a href="#">HOURLY</a>
+            <a href="#">DAILY</a>
+            <a href="#">RADAR</a>
+            <a href="#">MONTHLY</a>
+            <a href="#">AIR QUALITY</a>
+        </nav>
+    </header>
+    <main>
+        <div class="page-content">
+            <div class="card-header.spaced-content">
+                <h2>TODAY'S WEATHER</h2>
+            </div>
+            <div class="body">
+                <div class="body-item">
+                    <p>Hazy sun and very warm</p>
+                </div>
+                <div class="body-item">
+                    <p>Tonight: Clear to partly cloudy</p>
+                </div>
+            </div>
+        </div>
+        <h2 class="title">Top Stories</h2>
+        <article>
+            <a href="#" class="right-rail-article">
+                <div class="right-rail-article_meta">
+                    <h5>HURRICANE</h5>
+                    <p class="right-rail-article_title">U.S. Atlantic Coast to face lingering surf hazards as erin departs</p>
+                    <p class="right-rail-article_time">1 hour ago</p>
+                </div>
+            </a>
+        </article>
+    </main>
+</body>
+</html>

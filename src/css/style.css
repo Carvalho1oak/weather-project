@@ -1,0 +1,34 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    margin: 0px;
+}
+
+header > nav {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+form.search-form {
+    display: flex;
+    justify-content: right;
+    margin-right: 0px;
+}
+
+nav a {
+    text-decoration: none;
+    color: gray;
+}
+
+nav a:hover {
+    color: black;
+    font-weight: bold;
+}
+
+.div-inner {
+    background-color: #1F1F1F;
+    color: white;
+}
