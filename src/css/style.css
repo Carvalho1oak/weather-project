@@ -1,9 +1,17 @@
+html > body {
+    margin: 0px;
+    padding: 0px;
+}
+
 body {
     font-family: Arial, sans-serif;
 }
 
 h1 {
     margin: 0px;
+    position: relative;
+    top: 10px;
+    display: inline;
 }
 
 header > nav {
@@ -12,10 +20,35 @@ header > nav {
     margin-top: 10px;
 }
 
+h1.header-loc {
+    font-size: 16px;
+    position: relative;
+    left: 8px;
+}
+
+span.header-temp, span.unit {
+    display: inline;
+    position: relative;
+    left: 10px;
+    top: 10px;
+}
+
 form.search-form {
     display: flex;
-    justify-content: right;
+    justify-content: center;
     margin-right: 0px;
+    border-radius: 10px;
+}
+
+input.search-input {
+  width: 300px; /* Adjust as needed */
+  height: 35px;
+  padding: 10px; /* Adjust as needed */
+  font-size: 15px; /* Adjust as needed */
+  border-radius: 5px;
+  box-sizing: border-box; /* Very important! */
+  position: relative;
+  bottom: 18px;
 }
 
 nav a {
