@@ -1,43 +1,44 @@
 html > body {
-    margin: 0px;
-    padding: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 
 body {
-    font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 h1 {
-    margin: 0px;
-    position: relative;
-    top: 10px;
-    display: inline;
+  margin: 0px;
+  position: relative;
+  top: 10px;
+  display: inline;
 }
 
 header > nav {
-    display: flex;
-    gap: 20px;
-    margin-top: 10px;
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
 }
 
 h1.header-loc {
-    font-size: 16px;
-    position: relative;
-    left: 8px;
+  font-size: 16px;
+  position: relative;
+  left: 8px;
 }
 
-span.header-temp, span.unit {
-    display: inline;
-    position: relative;
-    left: 10px;
-    top: 10px;
+span.header-temp,
+span.unit {
+  display: inline;
+  position: relative;
+  left: 10px;
+  top: 10px;
 }
 
 form.search-form {
-    display: flex;
-    justify-content: center;
-    margin-right: 0px;
-    border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  margin-right: 0px;
+  border-radius: 10px;
 }
 
 input.search-input {
@@ -52,16 +53,16 @@ input.search-input {
 }
 
 nav a {
-    text-decoration: none;
-    color: gray;
+  text-decoration: none;
+  color: gray;
 }
 
 nav a:hover {
-    color: black;
-    font-weight: bold;
+  color: black;
+  font-weight: bold;
 }
 
 .div-inner {
-    background-color: #1F1F1F;
-    color: white;
+  background-color: #1f1f1f;
+  color: white;
 }
