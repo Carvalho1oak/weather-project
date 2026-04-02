@@ -1,4 +1,4 @@
-# Weather API Website
+# Weather API Website (AI Generated)
 
 A modern, responsive weather website featuring a clean dark theme design with real-time weather data display, forecasts, and comprehensive API feature showcase.
 
