@@ -1,20 +1,128 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather - The Most Complete Weather Data API</title>
-    <link rel="shortcut icon" href="src/images/favicon/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="src/css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link
+      rel="shortcut icon"
+      href="src/images/favicon/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="src/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <div class="nav-container">
+        <a href="main.html" class="logo">
+          <svg
+            class="logo-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <span>Weather</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#data">Data</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#docs">Docs</a></li>
+        </ul>
+        <div class="nav-buttons">
+          <button class="btn btn-secondary" id="unitToggle" title="Toggle temperature unit">°F</button>
+          <a href="signin.html" class="btn btn-secondary">Sign In</a>
+          <a href="signin.html" class="btn btn-primary">Get Started</a>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-bg-pattern"></div>
+      <div class="hero-content">
+        <div class="badge">Trusted by 100K+ Developers</div>
+        <h1>The Most Complete Weather Data API</h1>
+        <p class="hero-description">
+          Access real-time weather data, forecasts, air quality, and severe
+          weather alerts for any location worldwide. Built for developers, loved
+          by millions.
+        </p>
+        <div class="hero-search">
+          <div class="search-box">
+            <svg
+              class="search-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input
+              type="text"
+              id="citySearch"
+              placeholder="Search for a city (e.g., London, Tokyo)"
+            />
+            <button class="btn btn-primary" id="searchBtn">Search</button>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-value">99.9%</span>
+            <span class="stat-label">Uptime</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">200ms</span>
+            <span class="stat-label">Response Time</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">Global</span>
+            <span class="stat-label">Coverage</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="weather-display" id="weatherDisplay">
+        <div class="container">
+          <div class="current-weather" id="currentWeather">
+            <div class="weather-main">
+              <div class="location-info">
+                <h2 id="cityName">New York, US</h2>
+                <p class="date" id="currentDate">Monday, March 30, 2026</p>
+              </div>
+              <div class="temperature-display">
+                <div class="temp-icon" id="weatherIcon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
                     <circle cx="12" cy="12" r="5"></circle>
                     <line x1="12" y1="1" x2="12" y2="3"></line>
                     <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -24,333 +132,368 @@
                     <line x1="21" y1="12" x2="23" y2="12"></line>
                     <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
                     <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                  </svg>
+                </div>
+                <div class="temp-value">
+                  <span id="temperature">72</span>
+                  <span class="temp-unit">°F</span>
+                </div>
+                <p class="weather-desc" id="weatherDesc">Sunny</p>
+              </div>
+            </div>
+            <div class="weather-details">
+              <div class="detail-card">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M12 2v20"></path>
+                  <path d="M2 12h20"></path>
+                  <circle cx="12" cy="12" r="10"></circle>
                 </svg>
-                <span>Weather</span>
+                <div class="detail-info">
+                  <span class="detail-label">Humidity</span>
+                  <span class="detail-value" id="humidity">45%</span>
+                </div>
+              </div>
+              <div class="detail-card">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"
+                  ></path>
+                </svg>
+                <div class="detail-info">
+                  <span class="detail-label">Wind</span>
+                  <span class="detail-value" id="windSpeed">8 mph</span>
+                </div>
+              </div>
+              <div class="detail-card">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M2 12h20"></path>
+                  <path
+                    d="M2 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10"
+                  ></path>
+                  <path d="M12 2v20"></path>
+                </svg>
+                <div class="detail-info">
+                  <span class="detail-label">Pressure</span>
+                  <span class="detail-value" id="pressure">1015 hPa</span>
+                </div>
+              </div>
+              <div class="detail-card uv-card">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <path d="M12 2v2"></path>
+                  <path d="M12 20v2"></path>
+                  <path d="m4.93 4.93 1.41 1.41"></path>
+                  <path d="m17.66 17.66 1.41 1.41"></path>
+                  <path d="M2 12h2"></path>
+                  <path d="M20 12h2"></path>
+                  <path d="m6.34 17.66-1.41 1.41"></path>
+                  <path d="m19.07 4.93-1.41 1.41"></path>
+                </svg>
+                <div class="detail-info">
+                  <span class="detail-label">UV Index</span>
+                  <span class="detail-value uv-value" id="uvIndex">6</span>
+                  <span class="uv-label" id="uvLabel"></span>
+                </div>
+              </div>
             </div>
-            <ul class="nav-links">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#data">Data</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#docs">Docs</a></li>
-            </ul>
-            <div class="nav-buttons">
-                <button class="btn btn-secondary">Sign In</button>
-                <button class="btn btn-primary">Get Started</button>
-            </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+          </div>
         </div>
-    </nav>
+      </section>
 
-    <header class="hero">
-        <div class="hero-bg-pattern"></div>
-        <div class="hero-content">
-            <div class="badge">Trusted by 100K+ Developers</div>
-            <h1>The Most Complete Weather Data API</h1>
-            <p class="hero-description">
-                Access real-time weather data, forecasts, air quality, and severe weather alerts for any location worldwide. Built for developers, loved by millions.
+      <section class="hourly-section" id="hourlySection">
+        <div class="container">
+          <h3 class="section-title">24-Hour Forecast</h3>
+          <div class="hourly-forecast" id="hourlyForecast">
+            <!-- Hourly forecast will be populated by JavaScript -->
+          </div>
+        </div>
+      </section>
+
+      <section class="forecast-section">
+        <div class="container">
+          <h3 class="section-title">7-Day Forecast</h3>
+          <div class="forecast-grid" id="forecastGrid"></div>
+        </div>
+      </section>
+
+      <section class="air-quality-section" id="airQualitySection">
+        <div class="container">
+          <h3 class="section-title">Air Quality</h3>
+          <div class="air-quality-data" id="airQualityData">
+            <!-- Air quality data will be populated by JavaScript -->
+          </div>
+        </div>
+      </section>
+
+      <section class="features" id="features">
+        <div class="container">
+          <div class="section-header">
+            <h2>Why Developers Choose Our Weather API</h2>
+            <p>Powerful features designed for modern applications</p>
+          </div>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M12 2v4"></path>
+                  <path d="m16.2 7.8 2.9-2.9"></path>
+                  <path d="M18 12h4"></path>
+                  <path d="m16.2 16.2 2.9 2.9"></path>
+                  <path d="M12 18v4"></path>
+                  <path d="m4.9 19.1 2.9-2.9"></path>
+                  <path d="M2 12h4"></path>
+                  <path d="m4.9 4.9 2.9 2.9"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </div>
+              <h3>Real Time Weather</h3>
+              <p>
+                Get current weather conditions with precise data including
+                temperature, humidity, wind, and visibility from thousands of
+                weather stations worldwide.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+              </div>
+              <h3>Weather Forecast</h3>
+              <p>
+                Accurate forecasts up to 16 days ahead with hourly and daily
+                intervals. Plan ahead with confidence using our advanced
+                meteorological models.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38-5.72 4.87"
+                  ></path>
+                  <path
+                    d="M17.18 6.94c-4.37 6.03-6.02 9.42-8.03 17.72M6.42 9.13l5.73-4.87"
+                  ></path>
+                  <circle cx="12" cy="12" r="10"></circle>
+                </svg>
+              </div>
+              <h3>Air Quality</h3>
+              <p>
+                Comprehensive air quality data including AQI, pollutants, and
+                health recommendations. Protect your users with real-time
+                environmental insights.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <polygon
+                    points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
+                  ></polygon>
+                </svg>
+              </div>
+              <h3>Severe Alerts</h3>
+              <p>
+                Instant notifications for severe weather events including
+                storms, hurricanes, floods, and extreme temperatures to keep
+                your users safe.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                  ></path>
+                </svg>
+              </div>
+              <h3>Global Coverage</h3>
+              <p>
+                Weather data for over 200,000 cities and any coordinate point on
+                Earth. No matter where your users are, we've got them covered.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              <h3>Enterprise Security</h3>
+              <p>
+                Bank-grade SSL encryption, 99.9% uptime SLA, and GDPR
+                compliance. Your data and your users' data are always protected.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="data-types" id="data">
+        <div class="container">
+          <div class="section-header">
+            <h2>Comprehensive Data Types</h2>
+            <p>Everything you need for any weather-related application</p>
+          </div>
+          <div class="data-grid">
+            <div class="data-item">
+              <span class="data-badge">Temperature</span>
+              <span class="data-desc">Current, feels like, min/max</span>
+            </div>
+            <div class="data-item">
+              <span class="data-badge">Precipitation</span>
+              <span class="data-desc">Rain, snow, probability</span>
+            </div>
+            <div class="data-item">
+              <span class="data-badge">Wind</span>
+              <span class="data-desc">Speed, direction, gusts</span>
+            </div>
+            <div class="data-item">
+              <span class="data-badge">Atmosphere</span>
+              <span class="data-desc">Pressure, humidity, visibility</span>
+            </div>
+            <div class="data-item">
+              <span class="data-badge">Sun & Moon</span>
+              <span class="data-desc">Sunrise, sunset, moon phase</span>
+            </div>
+            <div class="data-item">
+              <span class="data-badge">Air Quality</span>
+              <span class="data-desc">AQI, pollutants, health advice</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <div class="container">
+          <div class="cta-content">
+            <h2>Ready to get started?</h2>
+            <p>
+              Start building with our free tier today. No credit card required.
             </p>
-            <div class="hero-search">
-                <div class="search-box">
-                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <path d="m21 21-4.35-4.35"></path>
-                    </svg>
-                    <input type="text" id="citySearch" placeholder="Search for a city (e.g., London, Tokyo)">
-                    <button class="btn btn-primary" id="searchBtn">Search</button>
-                </div>
+            <div class="cta-buttons">
+              <button class="btn btn-primary btn-large">Get API Key</button>
+              <button class="btn btn-secondary btn-large">
+                View Documentation
+              </button>
             </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-value">99.9%</span>
-                    <span class="stat-label">Uptime</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-value">200ms</span>
-                    <span class="stat-label">Response Time</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-value">Global</span>
-                    <span class="stat-label">Coverage</span>
-                </div>
-            </div>
+          </div>
         </div>
-    </header>
-
-    <main>
-        <section class="weather-display" id="weatherDisplay">
-            <div class="container">
-                <div class="current-weather" id="currentWeather">
-                    <div class="weather-main">
-                        <div class="location-info">
-                            <h2 id="cityName">New York, US</h2>
-                            <p class="date" id="currentDate">Monday, March 30, 2026</p>
-                        </div>
-                        <div class="temperature-display">
-                            <div class="temp-icon" id="weatherIcon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="5"></circle>
-                                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                                </svg>
-                            </div>
-                            <div class="temp-value">
-                                <span id="temperature">72</span>
-                                <span class="temp-unit">°F</span>
-                            </div>
-                            <p class="weather-desc" id="weatherDesc">Sunny</p>
-                        </div>
-                    </div>
-                    <div class="weather-details">
-                        <div class="detail-card">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 2v20"></path>
-                                <path d="M2 12h20"></path>
-                                <circle cx="12" cy="12" r="10"></circle>
-                            </svg>
-                            <div class="detail-info">
-                                <span class="detail-label">Humidity</span>
-                                <span class="detail-value" id="humidity">45%</span>
-                            </div>
-                        </div>
-                        <div class="detail-card">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path>
-                            </svg>
-                            <div class="detail-info">
-                                <span class="detail-label">Wind</span>
-                                <span class="detail-value" id="windSpeed">8 mph</span>
-                            </div>
-                        </div>
-                        <div class="detail-card">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M2 12h20"></path>
-                                <path d="M2 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10"></path>
-                                <path d="M12 2v20"></path>
-                            </svg>
-                            <div class="detail-info">
-                                <span class="detail-label">Pressure</span>
-                                <span class="detail-value" id="pressure">1015 hPa</span>
-                            </div>
-                        </div>
-                        <div class="detail-card">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="4"></circle>
-                                <path d="M12 2v2"></path>
-                                <path d="M12 20v2"></path>
-                                <path d="m4.93 4.93 1.41 1.41"></path>
-                                <path d="m17.66 17.66 1.41 1.41"></path>
-                                <path d="M2 12h2"></path>
-                                <path d="M20 12h2"></path>
-                                <path d="m6.34 17.66-1.41 1.41"></path>
-                                <path d="m19.07 4.93-1.41 1.41"></path>
-                            </svg>
-                            <div class="detail-info">
-                                <span class="detail-label">UV Index</span>
-                                <span class="detail-value" id="uvIndex">6</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="forecast-section">
-            <div class="container">
-                <h3 class="section-title">7-Day Forecast</h3>
-                <div class="forecast-grid" id="forecastGrid">
-                </div>
-            </div>
-        </section>
-
-        <section class="features" id="features">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Why Developers Choose Our Weather API</h2>
-                    <p>Powerful features designed for modern applications</p>
-                </div>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 2v4"></path>
-                                <path d="m16.2 7.8 2.9-2.9"></path>
-                                <path d="M18 12h4"></path>
-                                <path d="m16.2 16.2 2.9 2.9"></path>
-                                <path d="M12 18v4"></path>
-                                <path d="m4.9 19.1 2.9-2.9"></path>
-                                <path d="M2 12h4"></path>
-                                <path d="m4.9 4.9 2.9 2.9"></path>
-                                <circle cx="12" cy="12" r="3"></circle>
-                            </svg>
-                        </div>
-                        <h3>Real Time Weather</h3>
-                        <p>Get current weather conditions with precise data including temperature, humidity, wind, and visibility from thousands of weather stations worldwide.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                <line x1="16" y1="2" x2="16" y2="6"></line>
-                                <line x1="8" y1="2" x2="8" y2="6"></line>
-                                <line x1="3" y1="10" x2="21" y2="10"></line>
-                            </svg>
-                        </div>
-                        <h3>Weather Forecast</h3>
-                        <p>Accurate forecasts up to 16 days ahead with hourly and daily intervals. Plan ahead with confidence using our advanced meteorological models.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38-5.72 4.87"></path>
-                                <path d="M17.18 6.94c-4.37 6.03-6.02 9.42-8.03 17.72M6.42 9.13l5.73-4.87"></path>
-                                <circle cx="12" cy="12" r="10"></circle>
-                            </svg>
-                        </div>
-                        <h3>Air Quality</h3>
-                        <p>Comprehensive air quality data including AQI, pollutants, and health recommendations. Protect your users with real-time environmental insights.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                            </svg>
-                        </div>
-                        <h3>Severe Alerts</h3>
-                        <p>Instant notifications for severe weather events including storms, hurricanes, floods, and extreme temperatures to keep your users safe.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                            </svg>
-                        </div>
-                        <h3>Global Coverage</h3>
-                        <p>Weather data for over 200,000 cities and any coordinate point on Earth. No matter where your users are, we've got them covered.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            </svg>
-                        </div>
-                        <h3>Enterprise Security</h3>
-                        <p>Bank-grade SSL encryption, 99.9% uptime SLA, and GDPR compliance. Your data and your users' data are always protected.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="data-types" id="data">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Comprehensive Data Types</h2>
-                    <p>Everything you need for any weather-related application</p>
-                </div>
-                <div class="data-grid">
-                    <div class="data-item">
-                        <span class="data-badge">Temperature</span>
-                        <span class="data-desc">Current, feels like, min/max</span>
-                    </div>
-                    <div class="data-item">
-                        <span class="data-badge">Precipitation</span>
-                        <span class="data-desc">Rain, snow, probability</span>
-                    </div>
-                    <div class="data-item">
-                        <span class="data-badge">Wind</span>
-                        <span class="data-desc">Speed, direction, gusts</span>
-                    </div>
-                    <div class="data-item">
-                        <span class="data-badge">Atmosphere</span>
-                        <span class="data-desc">Pressure, humidity, visibility</span>
-                    </div>
-                    <div class="data-item">
-                        <span class="data-badge">Sun & Moon</span>
-                        <span class="data-desc">Sunrise, sunset, moon phase</span>
-                    </div>
-                    <div class="data-item">
-                        <span class="data-badge">Air Quality</span>
-                        <span class="data-desc">AQI, pollutants, health advice</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta">
-            <div class="container">
-                <div class="cta-content">
-                    <h2>Ready to get started?</h2>
-                    <p>Start building with our free tier today. No credit card required.</p>
-                    <div class="cta-buttons">
-                        <button class="btn btn-primary btn-large">Get API Key</button>
-                        <button class="btn btn-secondary btn-large">View Documentation</button>
-                    </div>
-                </div>
-            </div>
-        </section>
+      </section>
     </main>
 
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="logo">
-                        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                        </svg>
-                        <span>Weather</span>
-                    </div>
-                    <p>Powering weather data for the world's best applications.</p>
-                </div>
-                <div class="footer-links">
-                    <div class="link-group">
-                        <h4>Product</h4>
-                        <ul>
-                            <li><a href="#">Features</a></li>
-                            <li><a href="#">Pricing</a></li>
-                            <li><a href="#">Documentation</a></li>
-                        </ul>
-                    </div>
-                    <div class="link-group">
-                        <h4>Company</h4>
-                        <ul>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="link-group">
-                        <h4>Legal</h4>
-                        <ul>
-                            <li><a href="#">Privacy</a></li>
-                            <li><a href="#">Terms</a></li>
-                        </ul>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <div class="logo">
+              <svg
+                class="logo-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+              <span>Weather</span>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Weather API. All rights reserved.</p>
+            <p>Powering weather data for the world's best applications.</p>
+          </div>
+          <div class="footer-links">
+            <div class="link-group">
+              <h4>Product</h4>
+              <ul>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Documentation</a></li>
+              </ul>
             </div>
+            <div class="link-group">
+              <h4>Company</h4>
+              <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+            <div class="link-group">
+              <h4>Legal</h4>
+              <ul>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Terms</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Weather API. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
 
     <script src="src/js/index.js"></script>
-</body>
+  </body>
 </html>
