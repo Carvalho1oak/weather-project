@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Documentation - Weather</title>
+    <link
+      rel="shortcut icon"
+      href="src/images/favicon/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="src/css/style.css" />
+    <link rel="stylesheet" href="src/css/docs.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="docs-page">
+      <header class="docs-header">
+        <div class="container">
+          <a href="main.html" class="docs-back">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M19 12H5" />
+              <polyline points="12 19 5 12 12 5" />
+            </svg>
+            Back to Weather
+          </a>
+          <div class="docs-header-content">
+            <h1>API Documentation</h1>
+            <p>
+              Everything you need to integrate our weather data into your app
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <div class="container">
+        <div class="docs-layout">
+          <nav class="docs-sidebar">
+            <div class="sidebar-nav">
+              <div class="section-title">Getting Started</div>
+              <a href="#introduction" class="active">Introduction</a>
+              <a href="#authentication">Authentication</a>
+              <a href="#base-url">Base URL</a>
+              <div class="section-title">Endpoints</div>
+              <a href="#current-weather">Current Weather</a>
+              <a href="#forecast">5-Day Forecast</a>
+              <a href="#air-quality">Air Quality</a>
+              <a href="#alerts">Weather Alerts</a>
+              <div class="section-title">More</div>
+              <a href="#errors">Error Codes</a>
+              <a href="#rate-limits">Rate Limits</a>
+            </div>
+          </nav>
+
+          <div class="docs-content">
+            <section class="doc-section" id="introduction">
+              <h2>Introduction</h2>
+              <p>
+                The Weather API provides real-time weather data, forecasts, air
+                quality metrics, and severe weather alerts via a simple REST
+                interface. All responses are returned in JSON format.
+              </p>
+              <div class="callout info">
+                <svg
+                  class="callout-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="16" x2="12" y2="12" />
+                  <line x1="12" y1="8" x2="12.01" y2="8" />
+                </svg>
+                <span
+                  >New to the API? Start by
+                  <a href="signin.html">creating a free account</a> to get your
+                  API key.</span
+                >
+              </div>
+            </section>
+
+            <section class="doc-section" id="authentication">
+              <h2>Authentication</h2>
+              <p>
+                Every request to the API must include your API key. You can pass
+                it either as a query parameter or in the
+                <code>Authorization</code> header.
+              </p>
+
+              <h3>Query parameter</h3>
+              <div class="code-block">
+                <div class="code-label">cURL</div>
+                <pre><code>GET https://api.weather.com/v1/current?city=London&appid=<span class="token-key">YOUR_API_KEY</span></code></pre>
+              </div>
+
+              <h3>Bearer token (recommended)</h3>
+              <div class="code-block">
+                <div class="code-label">cURL</div>
+                <pre><code>GET https://api.weather.com/v1/current?city=London \
+  -H "Authorization: Bearer <span class="token-key">YOUR_API_KEY</span>"</code></pre>
+              </div>
+            </section>
+
+            <section class="doc-section" id="base-url">
+              <h2>Base URL</h2>
+              <p>All API endpoints are relative to:</p>
+              <div class="code-block">
+                <pre><code>https://api.weather.com/v1</code></pre>
+              </div>
+            </section>
+
+            <section class="doc-section" id="current-weather">
+              <h2>Current Weather</h2>
+              <p>Get current weather conditions for any location worldwide.</p>
+
+              <div class="endpoint">
+                <span class="method get">GET</span>
+                <code>/current</code>
+              </div>
+
+              <h4>Query Parameters</h4>
+              <table class="param-table">
+                <thead>
+                  <tr>
+                    <th>Parameter</th>
+                    <th>Type</th>
+                    <th>Required</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>city</code></td>
+                    <td>string</td>
+                    <td><span class="required">Required</span></td>
+                    <td>City name (e.g., London, Tokyo)</td>
+                  </tr>
+                  <tr>
+                    <td><code>units</code></td>
+                    <td>string</td>
+                    <td><span class="optional">Optional</span></td>
+                    <td>
+                      <code>imperial</code> (Fahrenheit) or
+                      <code>metric</code> (Celsius). Default:
+                      <code>imperial</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>lang</code></td>
+                    <td>string</td>
+                    <td><span class="optional">Optional</span></td>
+                    <td>
+                      Language code for weather descriptions. Default:
+                      <code>en</code>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h4>Example Request</h4>
+              <div class="code-block">
+                <div class="code-label">cURL</div>
+                <pre><code>curl -G "https://api.weather.com/v1/current" \
+  --data-urlencode "city=London" \
+  -d "units=imperial" \
+  -H "Authorization: Bearer YOUR_API_KEY"</code></pre>
+              </div>
+
+              <h4>Example Response</h4>
+              <div class="code-block response-card">
+                <pre><code>{
+  <span class="token-key">"city"</span>: <span class="token-string">"London"</span>,
+  <span class="token-key">"country"</span>: <span class="token-string">"GB"</span>,
+  <span class="token-key">"temperature"</span>: <span class="token-number">62</span>,
+  <span class="token-key">"feels_like"</span>: <span class="token-number">59</span>,
+  <span class="token-key">"condition"</span>: <span class="token-string">"Partly Cloudy"</span>,
+  <span class="token-key">"humidity"</span>: <span class="token-number">72</span>,
+  <span class="token-key">"wind_speed"</span>: <span class="token-number">12</span>,
+  <span class="token-key">"wind_direction"</span>: <span class="token-string">"NW"</span>,
+  <span class="token-key">"pressure"</span>: <span class="token-number">1013</span>,
+  <span class="token-key">"visibility"</span>: <span class="token-number">6.2</span>,
+  <span class="token-key">"uv_index"</span>: <span class="token-number">4</span>
+}</code></pre>
+              </div>
+            </section>
+
+            <section class="doc-section" id="forecast">
+              <h2>5-Day Forecast</h2>
+              <p>Get a 5-day weather forecast with 3-hour intervals.</p>
+
+              <div class="endpoint">
+                <span class="method get">GET</span>
+                <code>/forecast</code>
+              </div>
+
+              <h4>Query Parameters</h4>
+              <table class="param-table">
+                <thead>
+                  <tr>
+                    <th>Parameter</th>
+                    <th>Type</th>
+                    <th>Required</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>city</code></td>
+                    <td>string</td>
+                    <td><span class="required">Required</span></td>
+                    <td>City name</td>
+                  </tr>
+                  <tr>
+                    <td><code>units</code></td>
+                    <td>string</td>
+                    <td><span class="optional">Optional</span></td>
+                    <td>
+                      <code>imperial</code> or <code>metric</code>. Default:
+                      <code>imperial</code>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h4>Example Request</h4>
+              <div class="code-block">
+                <div class="code-label">cURL</div>
+                <pre><code>curl "https://api.weather.com/v1/forecast?city=London&units=metric" \
+  -H "Authorization: Bearer YOUR_API_KEY"</code></pre>
+              </div>
+
+              <h4>Example Response</h4>
+              <div class="code-block response-card">
+                <pre><code>{
+  <span class="token-key">"city"</span>: <span class="token-string">"London"</span>,
+  <span class="token-key">"forecast"</span>: [
+    {
+      <span class="token-key">"time"</span>: <span class="token-string">"2026-04-05T12:00:00Z"</span>,
+      <span class="token-key">"temperature"</span>: <span class="token-number">15</span>,
+      <span class="token-key">"feels_like"</span>: <span class="token-number">13</span>,
+      <span class="token-key">"condition"</span>: <span class="token-string">"Partly Cloudy"</span>,
+      <span class="token-key">"precipitation_chance"</span>: <span class="token-number">30</span>
+    }
+    <span class="token-comment">// ... more entries</span>
+  ]
+}</code></pre>
+              </div>
+            </section>
+
+            <section class="doc-section" id="air-quality">
+              <h2>Air Quality</h2>
+              <p>
+                Get current air quality data including AQI level and specific
+                pollutants.
+              </p>
+
+              <div class="endpoint">
+                <span class="method get">GET</span>
+                <code>/air-quality</code>
+              </div>
+
+              <h4>Query Parameters</h4>
+              <table class="param-table">
+                <thead>
+                  <tr>
+                    <th>Parameter</th>
+                    <th>Type</th>
+                    <th>Required</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>city</code></td>
+                    <td>string</td>
+                    <td><span class="required">Required</span></td>
+                    <td>City name</td>
+                  </tr>
+                  <tr>
+                    <td><code>lat</code>, <code>lon</code></td>
+                    <td>number</td>
+                    <td><span class="optional">Optional</span></td>
+                    <td>Coordinates instead of city name</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h4>Example Response</h4>
+              <div class="code-block response-card">
+                <pre><code>{
+  <span class="token-key">"aqi"</span>: <span class="token-number">2</span>,
+  <span class="token-key">"aqi_label"</span>: <span class="token-string">"Fair"</span>,
+  <span class="token-key">"pm2_5"</span>: <span class="token-number">12.4</span>,
+  <span class="token-key">"pm10"</span>: <span class="token-number">22.1</span>,
+  <span class="token-key">"no2"</span>: <span class="token-number">18.3</span>,
+  <span class="token-key">"o3"</span>: <span class="token-number">45.6</span>
+}</code></pre>
+              </div>
+            </section>
+
+            <section class="doc-section" id="alerts">
+              <h2>Weather Alerts</h2>
+              <p>Get active severe weather alerts for a location.</p>
+
+              <div class="endpoint">
+                <span class="method get">GET</span>
+                <code>/alerts</code>
+              </div>
+
+              <h4>Parameters</h4>
+              <table class="param-table">
+                <thead>
+                  <tr>
+                    <th>Parameter</th>
+                    <th>Type</th>
+                    <th>Required</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>lat</code>, <code>lon</code></td>
+                    <td>number</td>
+                    <td><span class="required">Required</span></td>
+                    <td>Coordinates for the alert area</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="callout warning">
+                <svg
+                  class="callout-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                  />
+                  <line x1="12" y1="9" x2="12" y2="13" />
+                  <line x1="12" y1="17" x2="12.01" y2="17" />
+                </svg>
+                <span
+                  >Weather Alerts is available on the
+                  <strong>Professional</strong> plan and above.</span
+                >
+              </div>
+
+              <h4>Example Response</h4>
+              <div class="code-block response-card">
+                <pre><code>{
+  <span class="token-key">"alerts"</span>: [
+    {
+      <span class="token-key">"event"</span>: <span class="token-string">"Severe Thunderstorm Warning"</span>,
+      <span class="token-key">"severity"</span>: <span class="token-string">"extreme"</span>,
+      <span class="token-key">"description"</span>: <span class="token-string">"Damaging winds up to 70 mph..."</span>,
+      <span class="token-key">"start"</span>: <span class="token-string">"2026-04-05T18:00:00Z"</span>,
+      <span class="token-key">"end"</span>: <span class="token-string">"2026-04-05T23:00:00Z"</span>
+    }
+  ]
+}</code></pre>
+              </div>
+            </section>
+
+            <section class="doc-section" id="errors">
+              <h2>Error Codes</h2>
+              <p>
+                All errors return a JSON object with <code>code</code> and
+                <code>message</code>.
+              </p>
+
+              <table class="param-table">
+                <thead>
+                  <tr>
+                    <th>Error</th>
+                    <th>Status</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>INVALID_API_KEY</code></td>
+                    <td>401</td>
+                    <td>The provided API key is not valid</td>
+                  </tr>
+                  <tr>
+                    <td><code>LOCATION_NOT_FOUND</code></td>
+                    <td>404</td>
+                    <td>The city or coordinates are not recognized</td>
+                  </tr>
+                  <tr>
+                    <td><code>RATE_LIMIT_EXCEEDED</code></td>
+                    <td>429</td>
+                    <td>Too many requests. Exceeded plan limit</td>
+                  </tr>
+                  <tr>
+                    <td><code>INTERNAL_ERROR</code></td>
+                    <td>500</td>
+                    <td>An unexpected server error occurred</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section class="doc-section" id="rate-limits">
+              <h2>Rate Limits</h2>
+              <p>Request limits depend on your subscription tier.</p>
+
+              <table class="param-table">
+                <thead>
+                  <tr>
+                    <th>Plan</th>
+                    <th>Monthly Limit</th>
+                    <th>Max Per Minute</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Starter</strong></td>
+                    <td>1,000</td>
+                    <td>10</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Professional</strong></td>
+                    <td>100,000</td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Business</strong></td>
+                    <td>Unlimited</td>
+                    <td>1,000</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="callout info">
+                <svg
+                  class="callout-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="16" x2="12" y2="12" />
+                  <line x1="12" y1="8" x2="12.01" y2="8" />
+                </svg>
+                <span
+                  >Rate limit headers (<code>X-RateLimit-Limit</code>,
+                  <code>X-RateLimit-Remaining</code>) are included in every
+                  response.</span
+                >
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Highlight active sidebar link on scroll
+      document.addEventListener("DOMContentLoaded", () => {
+        const sections = document.querySelectorAll(".doc-section");
+        const links = document.querySelectorAll(".sidebar-nav a");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                links.forEach((link) => link.classList.remove("active"));
+                const activeLink = document.querySelector(
+                  `.sidebar-nav a[href="#${entry.target.id}"]`,
+                );
+                if (activeLink) activeLink.classList.add("active");
+              }
+            });
+          },
+          { rootMargin: "-20% 0px -60% 0px" },
+        );
+
+        sections.forEach((section) => observer.observe(section));
+      });
+    </script>
+  </body>
+</html>

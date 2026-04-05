@@ -1,0 +1,331 @@
+/* ===== Docs Page Styles ===== */
+
+.docs-page {
+    min-height: 100vh;
+    background: var(--background);
+}
+
+/* Header */
+.docs-header {
+    padding: 48px 0 40px;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+}
+
+.docs-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 24px;
+    transition: var(--transition);
+}
+
+.docs-back:hover {
+    color: var(--text-primary);
+}
+
+.docs-back svg {
+    width: 16px;
+    height: 16px;
+}
+
+.docs-header-content h1 {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.docs-header-content p {
+    font-size: 18px;
+    color: var(--text-secondary);
+}
+
+/* Layout */
+.docs-layout {
+    display: flex;
+    gap: 40px;
+    padding: 40px 0 80px;
+}
+
+.docs-sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 24px;
+    align-self: flex-start;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sidebar-nav a {
+    display: block;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+    background: var(--surface);
+    color: var(--text-primary);
+}
+
+.sidebar-nav .section-title {
+    padding: 16px 12px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Content */
+.docs-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.doc-section {
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+}
+
+.doc-section:last-child {
+    border-bottom: none;
+}
+
+.doc-section h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.doc-section p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.doc-section h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 24px 0 12px;
+    color: var(--text-primary);
+}
+
+.doc-section h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 16px 0 8px;
+    color: var(--primary-light);
+}
+
+/* Endpoint Badge */
+.endpoint {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin: 12px 0;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 14px;
+}
+
+.endpoint .method {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.endpoint .method.get {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--success);
+}
+
+.endpoint .method.post {
+    background: rgba(59, 130, 246, 0.15);
+    color: var(--primary-light);
+}
+
+/* Code Blocks */
+.code-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin: 16px 0;
+    overflow: hidden;
+}
+
+.code-block pre {
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.code-block code {
+    font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+.code-label {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    background: var(--surface-light);
+    border-radius: 6px;
+    margin-bottom: 4px;
+    color: var(--text-muted);
+}
+
+/* Syntax Colors */
+.token-key {
+    color: var(--primary-light);
+}
+
+.token-string {
+    color: var(--success);
+}
+
+.token-number {
+    color: var(--accent);
+}
+
+.token-bool {
+    color: #c084fc;
+}
+
+.token-comment {
+    color: var(--text-muted);
+}
+
+/* Response Card */
+.response-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+}
+
+.response-card pre {
+    margin: 0;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-x: auto;
+    color: var(--text-primary);
+}
+
+/* Parameter Tables */
+.param-table {
+    width: 100%;
+    margin: 12px 0;
+    border-collapse: collapse;
+}
+
+.param-table th {
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border);
+}
+
+.param-table td {
+    padding: 12px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.param-table code {
+    background: var(--surface);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: var(--primary-light);
+}
+
+.param-table .required {
+    color: var(--error);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.param-table .optional {
+    color: var(--text-muted);
+    font-size: 11px;
+}
+
+/* Callouts */
+.callout {
+    padding: 16px 20px;
+    border-radius: var(--radius);
+    margin: 16px 0;
+    font-size: 14px;
+    display: flex;
+    gap: 12px;
+}
+
+.callout.info {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    color: var(--primary-light);
+}
+
+.callout.warning {
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    color: var(--warning);
+}
+
+.callout-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .docs-layout {
+        flex-direction: column;
+        padding: 24px 0 60px;
+    }
+
+    .docs-sidebar {
+        width: 100%;
+        position: static;
+    }
+
+    .docs-header-content h1 {
+        font-size: 28px;
+    }
+
+    .endpoint {
+        font-size: 12px;
+    }
+}

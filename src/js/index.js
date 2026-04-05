@@ -333,6 +333,28 @@ function setupEventListeners() {
     // Mobile menu toggle
     mobileMenuBtn.addEventListener('click', toggleMobileMenu);
 
+    // Code copy button
+    const codeCopyBtn = document.getElementById('codeCopyBtn');
+    if (codeCopyBtn) {
+        codeCopyBtn.addEventListener('click', () => {
+            const code = document.querySelector('.docs-code-block code');
+            if (code) {
+                navigator.clipboard.writeText(code.textContent).then(() => {
+                    codeCopyBtn.textContent = 'Copied!';
+                    codeCopyBtn.style.background = 'var(--success)';
+                    codeCopyBtn.style.color = 'white';
+                    codeCopyBtn.style.borderColor = 'var(--success)';
+                    setTimeout(() => {
+                        codeCopyBtn.textContent = 'Copy';
+                        codeCopyBtn.style.background = '';
+                        codeCopyBtn.style.color = '';
+                        codeCopyBtn.style.borderColor = '';
+                    }, 2000);
+                });
+            }
+        });
+    }
+
     // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
